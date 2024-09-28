@@ -15,7 +15,11 @@ public class Library {
         unReadBooks = new ArrayList<Book>();
         readBooks = new ArrayList<Book>();
     }
+<<<<<<< HEAD
+    //this is not a merge conflict
+=======
     // this is a merge conflit
+>>>>>>> 30422ece2c8cb956c59d93136810c9c237495c4a
     //returns the book that has title
     public ArrayList<Book> searchByTitle(String title) {
     	ArrayList<Book> answer = new ArrayList<Book>();
