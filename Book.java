@@ -67,6 +67,6 @@ public class Book {
     }
 
     public boolean equals(Book other) {
-        return this.title.equals(other.title) && this.author.equals(other.author);
+        return this.title.toLowerCase().equals(other.title.toLowerCase()) && this.author.toLowerCase().equals(other.author.toLowerCase());
     }
 }
