@@ -1,6 +1,17 @@
 
-import java.util.Scanner;
 import java.util.ArrayList;
+
+/* 
+ * class Controller represents a controller between the MyLibrary view and the
+ * Library model. 
+ * 
+ * Authors: Elle Knapp(dmknapp2385) and Eman Ayaz(emanayaz)
+ * 
+ * Encapsulation is maintained in this class as the view does not have direct 
+ * access to the library field. All manipulations of the library object are done
+ * through methods. Additionally, any list returned via these methods are copies
+ * of the origina data stored in library. 
+ */
 
 public class Controller {
     private Library library;

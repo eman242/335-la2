@@ -1,20 +1,17 @@
 
 import java.util.Comparator;
 
-public class Book {
+public final class Book {
 
     //why not declared as private?, Eman declaring as private
-    private boolean read;
     private String author;
-    String title;
-    //int rating;  hashmap
+    private String title;
 
     public Book(String title, String author) {
         //books initialized to be unread
         this.title = title;
         this.author = author;
-        //this.rating = 0;  hashmap
-        this.read = false;
+
     }
 
     public String getAuthor() {
@@ -25,26 +22,7 @@ public class Book {
         return this.title;
     }
 
-//Eman: temporary till we add hashmap functionality
-//    public int getRating() {
-//        return this.rating;
-//    }
-    public boolean getRead() {
-        return this.read;
-    }
 
-    public void setToRead() {
-        if (!read) {
-            this.read = true;
-        }
-    }
-
-    /*
-     * @pre Rating is an integer between 1 and 5
-     */
-//    public void rate(int rating) {  Hashmap
-//        this.rating = rating;
-//    }
     public static class CompareByTitle implements Comparator<Book> {
 
         public int compare(Book bOne, Book bTwo) {

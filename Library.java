@@ -45,19 +45,6 @@ public class Library {
 
     }
 
-//OLD method that does not deal use hashmap   
-//returns all books that match rating
-//    public ArrayList<Book> searchByRating(int rating) {
-//    	 ArrayList<Book> answer = new ArrayList<Book>();
-//     	
-//     	for (Book book : libraryBooks) {
-//             if (book.getRating()==rating) { //not case sensitive
-//                 answer.add(book);
-//             }
-//         }
-//     	
-//         return answer;
-//    }
     //returns all books that match rating
     public ArrayList<Book> searchByRating(int rating) {
         ArrayList<Book> answer = new ArrayList<Book>();
@@ -66,10 +53,8 @@ public class Library {
             int value = bookRatings.get(book);//get value associated with key Book
             if (value == rating) {
                 answer.add(book);
-                //System.out.println(book.getTitle()+ "WAS ADDED");
             }
         }
-        //System.out.println(answer.get(0).getTitle()+ " book onject shows");
         return answer;
     }
 
@@ -88,32 +73,23 @@ public class Library {
         Book b1 = new Book(title, author);
         libraryBooks.add(b1);  //because a new book is unread by default
         unReadBooks.add(b1);
-        //System.out.println("Size of library is"+ libraryBooks.size());
-
     }
 
     //Eman
     //updates newly read book and adds to readBooks list
     public void updateReadBook(String title, String author) {
-
     	Book b1= getBook(title,author); //gets the book Object
-    	b1.setToRead(); //updates attribute
-    	//libraryBooks.add(b1);  //adds to Library & readBooks collection
     	readBooks.add(b1);
     	unReadBooks.remove(b1);
-
     }
 
     //Eman
     //updates newly read book and adds to readBooks list
     public void rateBook(String title, String author, int rating) {
         Book b1 = getBook(title, author); //gets the book Object
-        //System.out.println("FROMM" + b1.getTitle());
-
+    
         bookRatings.put(b1, rating);  //we have 'rated' book by putting it in Hashmap
-        //System.out.println("FROMM22") ;
-        //if (!bookRatings.containsKey(b1))  thought of using if else not in hashmap
-        //             but pointless considering hashMap overwrites old value 	
+      	
 
     }
 
