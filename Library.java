@@ -16,7 +16,9 @@ public class Library {
         readBooks = new ArrayList<Book>();
     }
 
-    //this is not a merge conflict
+
+    //returns the book that has title
+
     public ArrayList<Book> searchByTitle(String title) {
         ArrayList<Book> answer = new ArrayList<Book>();
         for (Book book : libraryBooks) {
@@ -93,10 +95,12 @@ public class Library {
     //Eman
     //updates newly read book and adds to readBooks list
     public void updateReadBook(String title, String author) {
-        Book b1 = getBook(title, author); //gets the book Object
-        b1.setToRead(); //updates attribute
-        libraryBooks.add(b1);  //adds to Library & readBooks collection
-        readBooks.add(b1);
+
+    	Book b1= getBook(title,author); //gets the book Object
+    	b1.setToRead(); //updates attribute
+    	//libraryBooks.add(b1);  //adds to Library & readBooks collection
+    	readBooks.add(b1);
+    	unReadBooks.remove(b1);
 
     }
 
