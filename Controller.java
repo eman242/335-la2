@@ -3,25 +3,13 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Controller {
-
     private Library library;
-    private Scanner keyboard;
 
-    public Controller(Library lib, Scanner keyboard) {
-        this.library = lib;
-        this.keyboard = keyboard;
+    public Controller() {
+        this.library = new Library();
+
     }
 
-    /*
-     * method checks if input string is 1 and exits program if true
-     */
-    public void checkExit(String in) {
-        if (in.equals("0")) {
-            System.out.println("Goodbye!");
-            keyboard.close();
-            System.exit(1);
-        }
-    }
     //overloading
     public ArrayList<Book> search(String searchP, String toSearch) {
         if (searchP.equals("title")) {
