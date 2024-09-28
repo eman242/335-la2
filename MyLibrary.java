@@ -31,7 +31,7 @@ class MyLibrary {
                 if (!books.isEmpty()) {
                     for (Book book : books) {
                         ///does this handle empty list
-                        System.out.println(book.getTitle() + " : " + book.getAuthor());
+                        System.out.println(book);
                     }
                 } else {
                     System.out.println("Sorry no books found with these specifications");
@@ -46,7 +46,7 @@ class MyLibrary {
                 ArrayList<Book> books = getBooks();
                 if (!books.isEmpty()) {
                     for (Book book : books) {
-                        System.out.println(book.getTitle() + " : " + book.getAuthor());
+                        System.out.println(book);
                     }
                 } else {
                     System.out.println("Sorry no books found in your library.");
@@ -54,7 +54,7 @@ class MyLibrary {
 
             } else if (input.equals("suggestread")) {
                 Book suggestion = suggestRead();
-                System.out.println(suggestion.getTitle() + " : " + suggestion.getAuthor());
+                System.out.println(suggestion);
             } else if (input.equals("addbooks")) {
                 addBooks();
             } else {
