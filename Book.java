@@ -2,16 +2,15 @@
 import java.util.Comparator;
 
 public class Book {
-    
-	
-	//why not declared as private?, Eman declaring as private
+
+    //why not declared as private?, Eman declaring as private
     private boolean read;
     private String author;
     String title;
     //int rating;  hashmap
 
     public Book(String title, String author) {
-    	//books initialized to be unread
+        //books initialized to be unread
         this.title = title;
         this.author = author;
         //this.rating = 0;  hashmap
@@ -25,12 +24,11 @@ public class Book {
     public String getTitle() {
         return this.title;
     }
-    
+
 //Eman: temporary till we add hashmap functionality
 //    public int getRating() {
 //        return this.rating;
 //    }
-
     public boolean getRead() {
         return this.read;
     }
@@ -47,7 +45,6 @@ public class Book {
 //    public void rate(int rating) {  Hashmap
 //        this.rating = rating;
 //    }
-
     public static class CompareByTitle implements Comparator<Book> {
 
         public int compare(Book bOne, Book bTwo) {
@@ -67,6 +64,9 @@ public class Book {
     }
 
     public boolean equals(Book other) {
-        return this.title.toLowerCase().equals(other.title.toLowerCase()) && this.author.toLowerCase().equals(other.author.toLowerCase());
+
+        return this.title.toLowerCase().equals(other.title.toLowerCase())
+                && this.author.toLowerCase().equals(other.author.toLowerCase());
+
     }
 }
