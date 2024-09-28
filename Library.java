@@ -115,7 +115,7 @@ public class Library {
     }
     
     
-    //Eman
+    //Eman & Elle
     //finds a book object by searching for name and title
     // and returns it to be changed
     private Book getBook(String title, String author) {
