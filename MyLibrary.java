@@ -10,6 +10,11 @@ import java.util.Scanner;
  * 
  * Class MyLibrary acts as the user interface for adding, searching and viewing
  * books stored in a virtual library. 
+ * 
+ * Encapsulation is not so much a concern with this class. This is the view
+ * portion of the program and as such is accessed by the view via the command line.
+ * No other program has access to these methods, however all class methods and
+ * variables are private.
  */
 class MyLibrary {
 
