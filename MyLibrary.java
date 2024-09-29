@@ -8,10 +8,12 @@ import java.util.Scanner;
  * Program: Large Assignment 2
  * Authors: Elle Knapp (dmknapp2385) and Eman Ayaz()
  * 
+ * Class MyLibrary acts as the user interface for adding, searching and viewing
+ * books stored in a virtual library. 
  */
 class MyLibrary {
 
-    private static final Scanner keyboard = new Scanner(System.in);
+    private static Scanner keyboard = new Scanner(System.in);
 
     private static Controller control = new Controller();
 
@@ -26,11 +28,11 @@ class MyLibrary {
             checkExit(input);
             input = input.toLowerCase();
 
-            if (input.equals("search")) {  //how does this get title, author or rating?
+            // if statments to handle user input
+            if (input.equals("search")) {
                 ArrayList<Book> books = searchBook();
                 if (!books.isEmpty()) {
                     for (Book book : books) {
-                        ///does this handle empty list
                         System.out.println(book);
                     }
                 } else {
@@ -66,7 +68,9 @@ class MyLibrary {
     }
 
     /*
-     * method checks if input string is 1 and exits program if true
+     * Method checks if input string is 0 and exits program if true
+     * 
+     * Parameters: in -- a string
      */
     private static void checkExit(String in) {
         if (in.equals("0")) {
@@ -80,12 +84,15 @@ class MyLibrary {
      * Method gets user input for search type and name and gets all books 
      * corresponding to those inputs
      * 
-     * @post- returns a list of Book objects or an empty list
+     * Parameters: None
+     * 
+     * Returns: an ArrayList of book objects or an emtpy list
      */
     private static ArrayList<Book> searchBook() {
         System.out.println("How would you like to search? By author, title"
                 + " or rating?");
         String searchP;
+        //ensure input is title, author or rating
         while (true) {
             searchP = keyboard.nextLine().toLowerCase().trim();
             checkExit(searchP);
@@ -97,6 +104,7 @@ class MyLibrary {
                 break;
             }
         }
+
         ArrayList<Book> books;
         if (searchP.equals("rating")) {
             books = searchByRating();
@@ -110,11 +118,16 @@ class MyLibrary {
     }
 
     /*
-     * Input validation to search by rating
+     * Method validates rating input to search by 
+     * 
+     * Parameters: None
+     * 
+     * Returns: an ArrayList of book objects or an empty list
      */
     private static ArrayList<Book> searchByRating() {
         int rating;
         while (true) {
+            // make sure input is an integer between 1 and 5
             try {
                 System.out.println("What rating would you like to search for?(1-5)");
                 String input = keyboard.nextLine().trim();
@@ -135,6 +148,8 @@ class MyLibrary {
     /*
      * Method gets user input for title and author of a book and adds it to the 
      * library if it does not already exist
+     * 
+     * Parameters: None
      */
     private static void addBook() {
         System.out.println("What is the name of the book you woud like to add?");
@@ -155,7 +170,10 @@ class MyLibrary {
 
 
     /* 
-     * Method gets user input for title of a book and sets to read if found
+     * Method gets user input for title of a book and sets to read if found, 
+     * alerts user if book not found
+     * 
+     * Parameters: None
      */
     private static void setToRead() {
         System.out.println("What is the name of the book you woud like to read?");
@@ -175,7 +193,9 @@ class MyLibrary {
 
     /*
      * Method gets user input for title and author of a book and rating and 
-     * updates the books rating to the users input
+     * updates the book's rating to the user's rating
+     * 
+     * Parameters: None
      */
     private static void rate() {
         System.out.println("What is the name of the book you woud like to rate?");
@@ -184,7 +204,10 @@ class MyLibrary {
         System.out.println("What is the name of the author?");
         String author = keyboard.nextLine().trim();
         checkExit(author);
+
+        // try to rate book, alert user if book not found
         try {
+            // make sure rating is a number between 1 and 5
             Integer rating;
             while (true) {
                 try {
@@ -214,11 +237,14 @@ class MyLibrary {
      * by title, or author. Or returns read/unread books. User input determines 
      * how to sort
      * 
-     * @post- methods returns a list of Book objects or an empty list
+     * Parameters: None
+     * 
+     * Returns: an ArrayList of book objects or an empty list
      */
     private static ArrayList<Book> getBooks() {
         int sortMethod;
         while (true) {
+            // make sure sort method is a number between 1 and 4
             try {
                 System.out.println("How would you like to retrieve your books."
                         + " Enter 1 for by title, 2 by author, 3 for all read, or 4 for"
@@ -240,6 +266,10 @@ class MyLibrary {
 
     /*
      * Method returns a random unread book from the library
+     * 
+     * Parameters: None
+     * 
+     * Returns: a book object
      */
     private static Book suggestRead() {
         return control.suggestRead();
@@ -247,10 +277,12 @@ class MyLibrary {
 
     /*
      * Method adds multiple books to the library after reading them in from a
-     * textfile. User input is the name of a file/path.
+     * textfile. User input is the name of a file/path. File must end in .txt
      * 
-     * @pre- textfile must be in the format title;author
+     * @pre- textfile must be in the format title;author and end in .txt
      * @throws- FileNotFoundException if file not found at input path
+     * 
+     * Parameters: None
      */
     private static void addBooks() {
         System.out.println("Enter the name or path of the file containing"
@@ -269,13 +301,15 @@ class MyLibrary {
         while (inFile.hasNextLine()) {
             String book = inFile.nextLine();
             String[] titleAuthor = book.split(";");
-            String title = titleAuthor[0].trim();  //why not trimming
+            String title = titleAuthor[0].trim();
             String author = titleAuthor[1].trim();
 
+            // add each book in file to library; alert user if the book already
+            //exists and do not add it to the library
             try {
                 control.addBook(title, author);
                 System.out.println("Book " + title + " by " + author + " added to your library");
-            } catch (IllegalArgumentException e) { //what does this do?
+            } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage() + " Title: " + title + ", Author: "
                         + author);
             }
