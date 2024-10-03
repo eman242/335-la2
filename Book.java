@@ -1,22 +1,28 @@
 
 import java.util.Comparator;
 
-public class Book {
+/*
+ * Class Book: represents a book object with a title and author
+ * Authors: Elle Knapp(dmknapp2385) and Eman Ayaz(emanayaz)
+ * 
+ * Encapsulation is achieved in the immutability of the object and scope of the
+ * instance variables. All fields are private and information in the fields is
+ * only returned in the classes toString method this makes the class  immutable
+ * as once a book object is craeted, none of the internal data can be altered. 
+ */
+public final class Book {
 
-    //why not declared as private?, Eman declaring as private
-    private boolean read;
     private String author;
-    String title;
-    //int rating;  hashmap
+    private String title;
 
     public Book(String title, String author) {
-        //books initialized to be unread
         this.title = title;
         this.author = author;
-        //this.rating = 0;  hashmap
-        this.read = false;
     }
 
+    /*
+     * Getters
+     */
     public String getAuthor() {
         return this.author;
     }
@@ -25,26 +31,11 @@ public class Book {
         return this.title;
     }
 
-//Eman: temporary till we add hashmap functionality
-//    public int getRating() {
-//        return this.rating;
-//    }
-    public boolean getRead() {
-        return this.read;
-    }
-
-    public void setToRead() {
-        if (!read) {
-            this.read = true;
-        }
-    }
 
     /*
-     * @pre Rating is an integer between 1 and 5
+     * Class CompareByTitle: Compares two book objects based on their titles.
+     *                       Comparison is not case sensitive
      */
-//    public void rate(int rating) {  Hashmap
-//        this.rating = rating;
-//    }
     public static class CompareByTitle implements Comparator<Book> {
 
         public int compare(Book bOne, Book bTwo) {
@@ -52,6 +43,10 @@ public class Book {
         }
     }
 
+    /*
+     * Class CompareByAuthor: Compares two book objects based on their authors.
+     *                       Comparison is not case sensitive.
+     */
     public static class CompareByAuthor implements Comparator<Book> {
 
         public int compare(Book bOne, Book bTwo) {
@@ -59,10 +54,17 @@ public class Book {
         }
     }
 
+    /*
+     * Returns a string with title : author
+     */
     public String toString() {
         return getTitle() + " : " + getAuthor();
     }
 
+    /*
+     * Equals method compares book object with another. Title and author are
+     * compared and not case sensitive
+     */
     public boolean equals(Book other) {
 
         return this.title.toLowerCase().equals(other.title.toLowerCase())
