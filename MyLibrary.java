@@ -126,7 +126,7 @@ class MyLibrary {
                     break;
                 }
             } catch (Exception e) {
-                System.out.println("Sorry this is not a valid rating.");
+                System.out.println("Sorry this is not a valid rating."); //executes when not string
             }
         }
         return control.search(rating);
